@@ -18,7 +18,7 @@ public class Funcionalidades implements FuncionalidadesInterface {
 
         armazenamento.adicionarUsuario(nomeCadastro, emailCadastro, senhaCadastro);
 
-        System.out.println("Cadastro realizado!");
+        System.out.println("\nCadastro realizado!");
     }
 
     @Override
@@ -27,10 +27,10 @@ public class Funcionalidades implements FuncionalidadesInterface {
         System.out.print("Qual mídia deseja pesquisar? (Título, artista, tipo ou estilo): ");
         String busca = scanner.nextLine();
 
-        System.out.println("Resultado da busca por: " + busca + "\n");
+        System.out.println("\nResultado da busca por: " + busca + "\n");
 
         for (Midia m : armazenamento.infoMidia) {
-            if (m.titulo.contains(busca) || m.artista.contains(busca) || (m.type != null && m.type.toString().contains(busca)) || (m.style != null && m.style.toString().contains(busca))) {
+            if (m.titulo.contains(busca) || m.artista.contains(busca) || (m.type != null && m.type.toString().contains(busca))) {
                 System.out.println(m);
             }
         }
@@ -38,7 +38,7 @@ public class Funcionalidades implements FuncionalidadesInterface {
 
     @Override
     public void listarMidiaCatalogo() {
-        System.out.println("========== Catálogo de Músicas ==========");
+        System.out.println("========== Catálogo de Músicas ==========\n");
         for (Midia m : armazenamento.infoMidia) {
             System.out.println(m);
         }
@@ -51,7 +51,7 @@ public class Funcionalidades implements FuncionalidadesInterface {
         String nomePlaylist = scanner.nextLine();
 
         armazenamento.adicionarPlaylist(nomePlaylist);
-        System.out.println("Playlist criada com sucesso!");
+        System.out.println("\nPlaylist criada com sucesso!");
     }
 
     @Override
@@ -73,12 +73,12 @@ public class Funcionalidades implements FuncionalidadesInterface {
                     for (Midia midia : armazenamento.infoMidia) {
                         if (midia.titulo.equals(tituloMidia1)) {
                             armazenamento.adicionarMidiaNaPlaylist(nomePlaylist1, midia);
-                            System.out.println("Mídia adicionada!");
+                            System.out.println("\nMídia adicionada!");
                             break;
                         }
                     }
                 } else {
-                    System.out.println("Playlist não encontrada.");
+                    System.out.println("\nPlaylist não encontrada.");
                 }
                 break;
 
@@ -93,7 +93,7 @@ public class Funcionalidades implements FuncionalidadesInterface {
                     for (Midia midia : armazenamento.infoMidia) {
                         if (midia.titulo.equals(tituloMidia2)) {
                             armazenamento.removerMidiaNaPlaylist(nomePlaylist2, midia);
-                            System.out.println("Mídia removida!");
+                            System.out.println("\nMídia removida!");
                             break;
                         }
                     }
@@ -103,7 +103,7 @@ public class Funcionalidades implements FuncionalidadesInterface {
                 break;
 
             default:
-                System.out.println("Opção inválida.");
+                System.out.println("\nOpção inválida.");
                 break;
         }
     }
@@ -129,7 +129,7 @@ public class Funcionalidades implements FuncionalidadesInterface {
             System.out.println(listaPlaylist.toString());
             System.out.println("Duração total: " + duracaoTotal + " min");
         } else {
-            System.out.println("Playlist não encontrada.");
+            System.out.println("\nPlaylist não encontrada.");
         }
     }
 
@@ -181,12 +181,12 @@ public class Funcionalidades implements FuncionalidadesInterface {
                 break;
 
             default:
-                System.out.println("Tipo inválido! Mídia não cadastrada.");
+                System.out.println("\nTipo inválido! Mídia não cadastrada.");
                 return;
         }
 
         armazenamento.adicionarMidia(midia);
-        System.out.println("Mídia adicionada!");
+        System.out.println("\nMídia adicionada!");
     }
 
     @Override
@@ -232,7 +232,7 @@ public class Funcionalidades implements FuncionalidadesInterface {
                             visualizarPlaylist();
                             break;
                         default:
-                            System.out.println("Opção inválida.");
+                            System.out.println("\nOpção inválida.");
                             break;
                     }
                     break;
@@ -243,7 +243,7 @@ public class Funcionalidades implements FuncionalidadesInterface {
                     System.out.println("Até logo!");
                     break;
                 default:
-                    System.out.println("Opção inválida.");
+                    System.out.println("\nOpção inválida.");
                     break;
             }
         } while (opcao != 5);
@@ -255,7 +255,7 @@ public class Funcionalidades implements FuncionalidadesInterface {
                 String line = scanner.nextLine().trim();
                 return Integer.parseInt(line);
             } catch (NumberFormatException e) {
-                System.out.print("Entrada inválida. Digite um número: ");
+                System.out.print("\nEntrada inválida. Digite um número: ");
             }
         }
     }

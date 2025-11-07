@@ -1,6 +1,6 @@
 public class Musica extends Midia {
     public Musica(String titulo, String artista, int duracao, Type type) {
-        super(titulo, artista, duracao, type, Style.Música);
+        super(titulo, artista, duracao, type);
 
     }
 
