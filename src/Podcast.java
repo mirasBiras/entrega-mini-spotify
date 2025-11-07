@@ -6,6 +6,6 @@ public class Podcast extends Midia {
 
     @Override
     public String toString() {
-        return "[Podcast]" + "\n" + titulo + "\n" + artista + "Duração: " + duracao + " minuto(s)";
+        return "[Podcast]" + "\n" + titulo + "\n" + artista + "\nDuração: " + duracao + " minuto(s)";
     }
 }

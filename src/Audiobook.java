@@ -6,6 +6,6 @@ public class Audiobook extends Midia {
 
     @Override
     public String toString() {
-        return "[Audiobook]" + "\n" + titulo + "\n" + artista + "Duração: " + duracao + " minuto(s)";
+        return "[Audiobook]" + "\n" + titulo + "\n" + artista + "\nDuração: " + duracao + " minuto(s)";
     }
 }

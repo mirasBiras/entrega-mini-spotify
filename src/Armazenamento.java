@@ -3,18 +3,18 @@ import java.util.HashMap;
 
 public class Armazenamento {
 
-    HashMap<String, Usuario> infoUsuario = new HashMap<>();
-    HashMap<String, Midia> infoMidia = new HashMap<>();
+    ArrayList<Usuario> infoUsuario = new ArrayList<>();
+    ArrayList<Midia> infoMidia = new ArrayList<>();
     HashMap<String, ArrayList<Midia>> infoPlaylist = new HashMap<>();
 
     public void adicionarUsuario(String nome, String email, int senha) {
         Usuario usuario = new Usuario(nome, email, senha);
-        infoUsuario.put(nome, usuario);
+        infoUsuario.add(usuario);
     }
 
     public void adicionarMidia(Midia midia) {
-        if (!infoMidia.containsKey(midia.titulo)) {
-            infoMidia.put(midia.titulo, midia);
+        if (!infoMidia.contains(midia)) {
+            infoMidia.add(midia);
         } else {
             System.out.println("Mídia já cadastrada.");
         }

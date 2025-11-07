@@ -29,7 +29,7 @@ public class Funcionalidades implements FuncionalidadesInterface {
 
         System.out.println("Resultado da busca por: " + busca + "\n");
 
-        for (Midia m : armazenamento.infoMidia.values()) {
+        for (Midia m : armazenamento.infoMidia) {
             if (m.titulo.contains(busca) || m.artista.contains(busca) || (m.type != null && m.type.toString().contains(busca)) || (m.style != null && m.style.toString().contains(busca))) {
                 System.out.println(m);
             }
@@ -39,7 +39,7 @@ public class Funcionalidades implements FuncionalidadesInterface {
     @Override
     public void listarMidiaCatalogo() {
         System.out.println("========== Catálogo de Músicas ==========");
-        for (Midia m : armazenamento.infoMidia.values()) {
+        for (Midia m : armazenamento.infoMidia) {
             System.out.println(m);
         }
     }
@@ -70,12 +70,12 @@ public class Funcionalidades implements FuncionalidadesInterface {
                 String tituloMidia1 = scanner.nextLine();
 
                 if (armazenamento.infoPlaylist.containsKey(nomePlaylist1)) {
-                    if (armazenamento.infoMidia.containsKey(tituloMidia1)) {
-                        Midia midia = armazenamento.infoMidia.get(tituloMidia1);
-                        armazenamento.adicionarMidiaNaPlaylist(nomePlaylist1, midia);
-                        System.out.println("Mídia adicionada com sucesso!");
-                    } else {
-                        System.out.println("Mídia não encontrada.");
+                    for (Midia midia : armazenamento.infoMidia) {
+                        if (midia.titulo.equals(tituloMidia1)) {
+                            armazenamento.adicionarMidiaNaPlaylist(nomePlaylist1, midia);
+                            System.out.println("Mídia adicionada!");
+                            break;
+                        }
                     }
                 } else {
                     System.out.println("Playlist não encontrada.");
@@ -90,12 +90,12 @@ public class Funcionalidades implements FuncionalidadesInterface {
                 String tituloMidia2 = scanner.nextLine();
 
                 if (armazenamento.infoPlaylist.containsKey(nomePlaylist2)) {
-                    if (armazenamento.infoMidia.containsKey(tituloMidia2)) {
-                        Midia midia = armazenamento.infoMidia.get(tituloMidia2);
-                        armazenamento.removerMidiaNaPlaylist(nomePlaylist2, midia);
-                        System.out.println("Mídia removida com sucesso!");
-                    } else {
-                        System.out.println("Mídia não encontrada.");
+                    for (Midia midia : armazenamento.infoMidia) {
+                        if (midia.titulo.equals(tituloMidia2)) {
+                            armazenamento.removerMidiaNaPlaylist(nomePlaylist2, midia);
+                            System.out.println("Mídia removida!");
+                            break;
+                        }
                     }
                 } else {
                     System.out.println("Playlist não encontrada.");
