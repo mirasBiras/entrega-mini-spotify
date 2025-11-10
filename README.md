@@ -1,51 +1,56 @@
-# Mini Spotify 🎧
+# Mini Spotify (Console) 🎧
 
-Visão Geral
+Projeto em Java que simula um sistema básico de streaming via console.  
+Funcionalidades principais:
+- Cadastro de usuário
+- Cadastro e listagem de mídias (Música, Podcast, Audiobook)
+- Criação e gerenciamento de playlists
+- Visualização de playlist com duração total
 
-Este projeto é um sistema em Java que gerencia usuários, mídias e playlists. Ele permite cadastrar usuários, adicionar mídias, criar playlists e visualizar informações de maneira organizada. A interação ocorre via terminal, e os dados são armazenados em memória usando coleções como HashMap e ArrayList.
+## Como executar
+1. Abra o projeto no IntelliJ.
+2. Execução: `Main.java` → `public static void main`.
+3. Siga o menu no console.
 
-- Funcionalidades
+## O que funciona
+- Cadastro simples de usuário;
+- Cadastro de mídias com tipo e duração;
+- Criação de playlists globais;
+- Adição/remoção de mídias em playlists;
+- Listagem e busca por mídias.
 
-Cadastro de usuários com nome, e-mail e senha.
+## Limitações conhecidas
+- Dados são mantidos apenas em memória (sem persistência entre execuções).
+- `Usuario` usa `int` para senha (recomendado trocar para `String`).
+- `infoUsuario` e `infoMidia` são `ArrayList` — buscas são lineares.
+- Sem testes automatizados.
 
-Registro de mídias com título, artista, duração e gênero.
+## Comparação com solução gerada por IA (resumo)
+A solução gerada por IA recomenda:
+- usar `Map<String, Usuario>` e `Map<String, Midia>` para buscas diretas;
+- encapsular operações (ex.: `Usuario.addPlaylist(...)`);
+- usar `String` para senha e implementar `equals/hashCode` em `Midia`;
+- adicionar persistência (JSON) se for necessário manter dados entre execuções.
+Essas mudanças aumentam robustez e manutenção do código.
 
-Criação de playlists associadas a usuários.
+## Sugestões de melhoria (priorizadas)
+1. Migrar `infoUsuario` para `Map<String, Usuario>` (chave: email). — **médio**
+2. `Usuario.addPlaylist(String)` e `Usuario.getPlaylists()` (encapsulamento). — **baixo**
+3. Trocar `int senha` por `String senha`. — **baixo**
+4. Mapear `midias` por título (`Map<String, Midia>`). — **baixo**
+5. Implementar `equals/hashCode` em `Midia`. — **baixo**
+6. Persistência (salvar em JSON ao sair / carregar ao iniciar). — **alto**
 
-Exibição de informações detalhadas sobre usuários, mídias e playlists.
+## Mudanças propostas (snippets)
+Veja o arquivo `patches.md` (ou insira os trechos abaixo no código):
+- `Usuario` → adicionar `addPlaylist(...)`
+- `Armazenamento` → migrar para `Map` (ex.: `usuarios`, `midias`, `playlists`)
+- `Funcionalidades.criarPlaylist` → associar playlist ao usuário criado
 
-Estrutura organizada com classes separadas para funcionalidades, armazenamento e modelos de dados.
+---
 
-- Estrutura do Projeto
+## Autor
+Desenvolvido por: João Vicctor de Araújo
 
-Funcionalidades.java – Contém métodos para cadastro de usuários e mídias, criação de playlists e interação com o usuário.
-
-Armazenamento.java – Gerencia os dados armazenados em memória, como usuários, mídias e playlists.
-
-Usuario.java – Modelo que representa um usuário do sistema.
-
-Midia.java – Modelo que representa uma mídia, com atributos como título, artista, duração e gênero.
-
-Type.java – Enumeração que define os tipos ou gêneros de mídias.
-
-- Observações
-
-O projeto é voltado para execução em terminal, com entradas e saídas via Scanner e System.out.
-
-É modular, permitindo que novas funcionalidades sejam adicionadas de forma relativamente simples.
-
-O código utiliza conceitos de programação orientada a objetos e coleções do Java para organizar os dados.
-
-- Como eu faria / Possíveis Melhorias
-
-Se eu estivesse desenvolvendo este projeto, algumas melhorias que eu consideraria:
-
-Tratamento de exceções – Garantir que entradas inválidas não quebrem o sistema, usando try-catch e validações.
-
-Persistência de dados – Salvar usuários, mídias e playlists em arquivos ou banco de dados, para não perder os dados ao fechar o programa.
-
-Interface mais amigável – Criar menus mais claros e mensagens de feedback ao usuário.
-
-Métodos reutilizáveis e limpos – Modularizar melhor o código, por exemplo, separando a lógica de input/output da lógica de negócio.
-
-Uso de streams ou for-each – Para simplificar operações com listas e mapas, tornando o código mais legível.
+## Observação sobre a atividade
+Anexei uma análise comparativa entre a solução própria e uma solução gerada por IA, destacando convergências, divergências e recomendações para produção/escala.
