@@ -120,14 +120,14 @@ public class Funcionalidades implements FuncionalidadesInterface {
         String nomePlaylist = scanner.nextLine();
 
         if (armazenamento.infoPlaylist.containsKey(nomePlaylist)) {
-            StringBuilder listaPlaylist = new StringBuilder("Mídias salvas em " + nomePlaylist + "\n");
+            String listaPlaylist = "Mídias salvas em " + nomePlaylist + "\n";
             int duracaoTotal = 0;
 
             for (Midia m : armazenamento.infoPlaylist.get(nomePlaylist)) {
-                listaPlaylist.append(m).append("\n");
+                listaPlaylist+= m;
                 duracaoTotal += m.duracao;
             }
-            System.out.println(listaPlaylist.toString());
+            System.out.println(listaPlaylist);
             System.out.println("Duração total: " + duracaoTotal + " min");
         } else {
             System.out.println("\nPlaylist não encontrada.");
@@ -200,7 +200,7 @@ public class Funcionalidades implements FuncionalidadesInterface {
             System.out.println("1 - Buscar mídia");
             System.out.println("2 - Mostrar catálogo");
             System.out.println("3 - Minhas playlists");
-            System.out.println("4 - Configurações do ADM");
+            System.out.println("4 - Adicionar mídia (ADM)");
             System.out.println("5 - Sair");
 
             System.out.print("Escolha uma opção: ");

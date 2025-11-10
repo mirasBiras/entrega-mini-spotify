@@ -6,6 +6,6 @@ public class Musica extends Midia {
 
     @Override
     public String toString() {
-        return "[Música]" + "\n" + titulo + "\n" + artista + "\nDuração: " + duracao + " minuto(s)" + "\nGênero: " + type;
+        return "\n[Música]" + "\n" + titulo + "\n" + artista + "\nDuração: " + duracao + " minuto(s)" + "\nGênero: " + type;
     }
 }
