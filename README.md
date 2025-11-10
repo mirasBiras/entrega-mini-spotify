@@ -1,54 +1,51 @@
 # Mini Spotify 🎧
 
-Projeto desenvolvido em Java com o objetivo de simular um sistema básico de streaming de músicas.
+Visão Geral
 
-## 🎯 Funcionalidades
-- Cadastro de usuários  
-- Cadastro e listagem de mídias (músicas, podcasts, audiobooks)  
-- Criação e gerenciamento de playlists  
-- Visualização de playlists com duração total  
+Este projeto é um sistema em Java que gerencia usuários, mídias e playlists. Ele permite cadastrar usuários, adicionar mídias, criar playlists e visualizar informações de maneira organizada. A interação ocorre via terminal, e os dados são armazenados em memória usando coleções como HashMap e ArrayList.
 
----
+- Funcionalidades
 
-## 💡 Diferenças e possíveis melhorias
+Cadastro de usuários com nome, e-mail e senha.
 
-### O que foi implementado
-- Estrutura funcional completa com classes **Usuario**, **Midia**, **Funcionalidades**, e **Armazenamento**.
-- Utilização de **HashMap** e **ArrayList** para armazenamento em memória.
-- Sistema de menus via console.
+Registro de mídias com título, artista, duração e gênero.
 
-### O que poderia ser melhorado
-1. **Separação de responsabilidades:**  
-   Algumas lógicas de entrada de dados (Scanner) estão diretamente em `Funcionalidades`. Poderia ser interessante criar uma camada de interface (UI) separada.
+Criação de playlists associadas a usuários.
 
-2. **Melhor gerenciamento de usuários:**  
-   Hoje o sistema assume apenas um usuário ativo (sem login real).  
-   Futuramente, poderia ter um sistema simples de login/senha com persistência.
+Exibição de informações detalhadas sobre usuários, mídias e playlists.
 
-3. **Persistência de dados:**  
-   Atualmente, tudo é armazenado só em memória (HashMap).  
-   Poderia salvar os dados em arquivos (JSON, TXT) ou até em um banco de dados leve (como SQLite).
+Estrutura organizada com classes separadas para funcionalidades, armazenamento e modelos de dados.
 
-4. **Tratamento de exceções:**  
-   Algumas operações poderiam ter exceções customizadas para erros de cadastro, busca ou playlists inexistentes.
+- Estrutura do Projeto
 
-5. **Melhoria na arquitetura:**  
-   Uma ideia seria aplicar o padrão **MVC** — separar melhor as camadas de:
-   - Modelo (classes `Usuario`, `Midia`, etc.)
-   - Controle (lógica em `Funcionalidades`)
-   - Visão (interação com o usuário)
+Funcionalidades.java – Contém métodos para cadastro de usuários e mídias, criação de playlists e interação com o usuário.
 
-6. **Refatoração de repetição de código:**  
-   Métodos como adicionar/remover mídia em playlists poderiam ser extraídos para funções auxiliares.
+Armazenamento.java – Gerencia os dados armazenados em memória, como usuários, mídias e playlists.
 
----
+Usuario.java – Modelo que representa um usuário do sistema.
 
-## 🚀 Como executar
-1. Abrir o projeto no IntelliJ.  
-2. Executar a classe principal (`Main.java`).  
-3. Usar o menu exibido no console.
+Midia.java – Modelo que representa uma mídia, com atributos como título, artista, duração e gênero.
 
----
+Type.java – Enumeração que define os tipos ou gêneros de mídias.
 
-## ✨ Autor
-Desenvolvido por João Vicctor de Araújo.
+- Observações
+
+O projeto é voltado para execução em terminal, com entradas e saídas via Scanner e System.out.
+
+É modular, permitindo que novas funcionalidades sejam adicionadas de forma relativamente simples.
+
+O código utiliza conceitos de programação orientada a objetos e coleções do Java para organizar os dados.
+
+- Como eu faria / Possíveis Melhorias
+
+Se eu estivesse desenvolvendo este projeto, algumas melhorias que eu consideraria:
+
+Tratamento de exceções – Garantir que entradas inválidas não quebrem o sistema, usando try-catch e validações.
+
+Persistência de dados – Salvar usuários, mídias e playlists em arquivos ou banco de dados, para não perder os dados ao fechar o programa.
+
+Interface mais amigável – Criar menus mais claros e mensagens de feedback ao usuário.
+
+Métodos reutilizáveis e limpos – Modularizar melhor o código, por exemplo, separando a lógica de input/output da lógica de negócio.
+
+Uso de streams ou for-each – Para simplificar operações com listas e mapas, tornando o código mais legível.
