@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Funcionalidades implements FuncionalidadesInterface {
     private Scanner scanner = new Scanner(System.in);
     private Armazenamento armazenamento = new Armazenamento();
+    private LeitorSeguro leitor = new LeitorSeguro();
 
     @Override
     public void cadastrarUsuario() {
@@ -14,7 +15,7 @@ public class Funcionalidades implements FuncionalidadesInterface {
         String emailCadastro = scanner.nextLine();
 
         System.out.print("Digite sua senha: ");
-        int senhaCadastro = lerIntSeguro();
+        int senhaCadastro = leitor.lerIntSeguro();
 
         armazenamento.adicionarUsuario(nomeCadastro, emailCadastro, senhaCadastro);
 
@@ -59,7 +60,7 @@ public class Funcionalidades implements FuncionalidadesInterface {
         System.out.println("========== Gerenciar minhas Playlists ==========");
         System.out.println("1 - Adicionar mídia");
         System.out.println("2 - Remover mídia");
-        int gerenciarPlaylistOpcao = lerIntSeguro();
+        int gerenciarPlaylistOpcao = leitor.lerIntSeguro();
 
         switch (gerenciarPlaylistOpcao) {
             case 1:
@@ -143,17 +144,17 @@ public class Funcionalidades implements FuncionalidadesInterface {
         String artista = scanner.nextLine();
 
         System.out.print("Digite a duração da mídia (em minutos): ");
-        int duracao = lerIntSeguro();
+        int duracao = leitor.lerIntSeguro();
 
         System.out.println("Digite o tipo da mídia: \n1 - Música\n2 - Podcast\n3 - Audiobook");
-        int escolhaTipo = lerIntSeguro();
+        int escolhaTipo = leitor.lerIntSeguro();
 
         Midia midia = null;
 
         switch (escolhaTipo) {
             case 1:
                 System.out.println("Digite o estilo musical da música:\n1 - Rock\n2 - Punk\n3 - MPB");
-                int escolhaEstilo = lerIntSeguro();
+                int escolhaEstilo = leitor.lerIntSeguro();
                 Type genero;
                 switch (escolhaEstilo) {
                     case 1:
@@ -203,7 +204,7 @@ public class Funcionalidades implements FuncionalidadesInterface {
             System.out.println("5 - Sair");
 
             System.out.print("Escolha uma opção: ");
-            opcao = lerIntSeguro();
+            opcao = leitor.lerIntSeguro();
 
             switch (opcao) {
                 case 1:
@@ -219,7 +220,7 @@ public class Funcionalidades implements FuncionalidadesInterface {
                     System.out.println("3 - Visualizar");
 
                     System.out.print("Escolha uma opção: ");
-                    int opc = lerIntSeguro();
+                    int opc = leitor.lerIntSeguro();
 
                     switch (opc) {
                         case 1:
@@ -247,16 +248,5 @@ public class Funcionalidades implements FuncionalidadesInterface {
                     break;
             }
         } while (opcao != 5);
-    }
-
-    private int lerIntSeguro() {
-        while (true) {
-            try {
-                String line = scanner.nextLine().trim();
-                return Integer.parseInt(line);
-            } catch (NumberFormatException e) {
-                System.out.print("\nEntrada inválida. Digite um número: ");
-            }
-        }
     }
 }
